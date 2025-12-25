@@ -4,7 +4,7 @@ import Menu from '@components/Header/Menu/Menu';
 import TextCurved from '@components/TextCurved/TextCurved';
 import SlideCommon from '@components/SlideCommon/SlideCommon';
 import SlideAbout from '@components/SlideAbout/SlideAbout';
-import iconArrow from '@assets/icons/arrow-right-icon.svg';
+import iconArrowBlack from '@assets/icons/arrow-right-black.svg';
 import { Link } from 'react-router';
 
 const dataProducts = [
@@ -70,10 +70,13 @@ function SectionHomeCollection() {
                 <SlideCommon data={dataProducts} isProductItem numberShow={4} />
             </div>
             <div className='flex justify-center items-center gap-1 '>
-                <Link to='/products' className='text-[16px] font-bold underline  '>
+                <Link
+                    to='/products'
+                    className='text-[16px] font-bold underline  '
+                >
                     XEM THÊM
                 </Link>
-                <img src={iconArrow} alt='icon arrow' className='w-6.5' />
+                <img src={iconArrowBlack} alt='icon arrow' className='w-6.5' />
             </div>
             <SlideAbout />
         </div>

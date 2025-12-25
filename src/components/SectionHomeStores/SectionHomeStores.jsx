@@ -3,7 +3,7 @@ import imgSticker5 from '@assets/images/stickerset_stores-2.png';
 import imgSticker6 from '@assets/images/stickerset-stores3.png';
 import imgSticker7 from '@assets/images/stickerset-stores_1.png';
 import { Select } from 'antd';
-import iconArrow from '@assets/icons/arrow-right-icon.svg';
+import iconArrowBlack from '@assets/icons/arrow-right-black.svg';
 import { Link } from 'react-router';
 
 const handleChange = value => {
@@ -59,9 +59,9 @@ function SectionHomeStores() {
                     <div className='mt-5 text-left p-2 flex justify-start items-center gap-1'>
                         <Link to='/shops'>XEM DANH SÁCH CỬA HÀNG</Link>
                         <img
-                            src={iconArrow}
+                            src={iconArrowBlack}
                             alt='icon arrow'
-                            className='w-6.5 '
+                            className='w-6.5'
                         />
                     </div>
                 </div>

@@ -34,32 +34,32 @@ function SectionHomeAboutUs() {
                         TÌM HIỂU
                     </button>
                 </div>
-                <div className='relative h-250'>
+                <div className='relative py-20 '>
                     <img src={imgMain} alt='image main' className='w-125' />
                     <img
                         src={imgSticker1}
                         alt='image sticker1'
-                        className='w-42 absolute -top-10 -left-30'
+                        className='w-42 absolute top-0 -left-30'
                     />
                     <img
                         src={imgSticker2}
                         alt='image sticker2'
-                        className='w-42 absolute bottom-100 -left-35 '
+                        className='w-42 absolute bottom-30 -left-35 '
                     />
                     <img
                         src={imgSticker3}
                         alt='image sticker3'
-                        className='w-42 absolute bottom-80 -right-30'
+                        className='w-42 absolute bottom-22 -right-30'
                     />
                     <img
                         src={imgSticker4}
                         alt='image sticker'
-                        className='w-42 absolute bottom-80 -left-15'
+                        className='w-42 absolute bottom-10 -left-15'
                     />
                     <img
                         src={imgQuote1}
                         alt='image quote 1'
-                        className='w-42 absolute top-20 -right-30'
+                        className='w-42 absolute top-50 -right-30'
                     />
                     <img
                         src={imgQuote2}
@@ -69,7 +69,7 @@ function SectionHomeAboutUs() {
                     <img
                         src={imgQuote3}
                         alt='image quote 3'
-                        className='w-42 absolute top-110 -right-25'
+                        className='w-42 absolute bottom-65 -right-25'
                     />
                 </div>
             </div>
