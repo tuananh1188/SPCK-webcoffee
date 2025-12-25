@@ -1,51 +1,51 @@
-import { listCategories } from '@components/SectionHomeCollection/constants';
-import React from 'react';
-import Menu from '@components/Header/Menu/Menu';
+import React, { useState, useEffect } from 'react';
 import TextCurved from '@components/TextCurved/TextCurved';
 import SlideCommon from '@components/SlideCommon/SlideCommon';
 import SlideAbout from '@components/SlideAbout/SlideAbout';
 import iconArrowBlack from '@assets/icons/arrow-right-black.svg';
 import { Link } from 'react-router';
+import { Spin } from 'antd';
 
-const dataProducts = [
-    {
-        image: 'https://i.postimg.cc/x1Zj7Fmg/a-me-mo-12544504de6947ae9090b070228d4613-grande.png',
-        category: 'Cà Phê',
-        name: 'A-Mê Đào',
-        price: 49000,
-        id: 1
-    },
-    {
-        image: 'https://i.postimg.cc/x1Zj7Fmg/a-me-mo-12544504de6947ae9090b070228d4613-grande.png',
-        category: 'Cà Phê',
-        name: 'Ethiopia Americano Đá',
-        price: 34500,
-        id: 2
-    },
-    {
-        image: 'https://i.postimg.cc/x1Zj7Fmg/a-me-mo-12544504de6947ae9090b070228d4613-grande.png',
-        category: 'Cà Phê',
-        name: 'Ethiopia Americano Nóng',
-        price: 49000,
-        id: 3
-    },
-    {
-        image: 'https://i.postimg.cc/x1Zj7Fmg/a-me-mo-12544504de6947ae9090b070228d4613-grande.png',
-        category: 'Pizza',
-        name: 'Pizza 5 Cheese',
-        price: 39000,
-        id: 4
-    },
-    {
-        image: 'https://i.postimg.cc/x1Zj7Fmg/a-me-mo-12544504de6947ae9090b070228d4613-grande.png',
-        category: 'Cà Phê',
-        name: 'Espresso Nóng',
-        price: 45000,
-        id: 5
-    }
+const listTypes = [
+    'CÀ PHÊ',
+    'TRÀ',
+    'LATTE & FRAPPE',
+    'SIGNATURE FOOD',
+    'PASTRY & MORE'
 ];
 
+const BASE_URL = 'https://693e793f12c964ee6b6d7672.mockapi.io';
+
 function SectionHomeCollection() {
+    const [selectedType, setSelectedType] = useState('CÀ PHÊ');
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    const fetchData = async () => {
+        try {
+            setLoading(true);
+            const res = await fetch(`${BASE_URL}/dataProducts`);
+            const data = await res.json();
+
+            if (Array.isArray(data)) {
+                const filtered = data.filter(
+                    p => p.type.toLowerCase() === selectedType.toLowerCase()
+                );
+                setProducts(filtered);
+            } else {
+                alert(data);
+            }
+        } catch {
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, [selectedType]);
+
     return (
         <div className='section-home-collection h-full bg-[#FCF9EB] flex flex-col justify-start items-center'>
             <div>
@@ -62,12 +62,25 @@ function SectionHomeCollection() {
                 </h1>
             </div>
             <div className='flex justify-center items-center gap-20 text-[28px] text-[#000000] font-bold mt-10'>
-                {listCategories.map(item => {
-                    return <Menu content={item.content} href={item.href} />;
-                })}
+                {listTypes.map((type, index) => (
+                    <button
+                        key={index}
+                        className={`cursor-pointer ${
+                            selectedType === type
+                                ? 'underline'
+                                : 'hover:underline'
+                        }`}
+                        onClick={() => {
+                            setSelectedType(type);
+                        }}
+                    >
+                        <div className='text-[16px] font-bold'>{type}</div>
+                    </button>
+                ))}
             </div>
+
             <div className='w-3/5'>
-                <SlideCommon data={dataProducts} isProductItem numberShow={4} />
+                <SlideCommon data={products} isProductItem numberShow={4} />
             </div>
             <div className='flex justify-center items-center gap-1 '>
                 <Link
@@ -79,6 +92,7 @@ function SectionHomeCollection() {
                 <img src={iconArrowBlack} alt='icon arrow' className='w-6.5' />
             </div>
             <SlideAbout />
+            {loading && <Spin size='large' percent='auto' fullscreen />}
         </div>
     );
 }

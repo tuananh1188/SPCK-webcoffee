@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ProductItem from '@components/ProductItem/ProductItem';
 
-function SlideCommon({ data, isProductItem = false, numberShow }) {
+function SlideCommon({ data,  isProductItem = false, numberShow }) {
     let settings = {
         dots: false,
         infinite: true,
@@ -24,9 +24,10 @@ function SlideCommon({ data, isProductItem = false, numberShow }) {
                         {isProductItem ? (
                             <ProductItem
                                 image={item.image}
-                                category={item.category}
+                                type={item.type}
                                 name={item.name}
                                 price={item.price}
+                                showCategory={false}
                             />
                         ) : (
                             <img
