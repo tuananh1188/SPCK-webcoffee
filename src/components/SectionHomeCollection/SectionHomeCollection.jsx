@@ -61,7 +61,7 @@ function SectionHomeCollection() {
                     “NHÀ” COLLECTION
                 </h1>
             </div>
-            <div className='flex justify-center items-center gap-20 text-[28px] text-[#000000] font-bold mt-10'>
+            <div className='flex justify-center items-center gap-20 text-[#000000] font-bold mt-10'>
                 {listTypes.map((type, index) => (
                     <button
                         key={index}
@@ -74,7 +74,7 @@ function SectionHomeCollection() {
                             setSelectedType(type);
                         }}
                     >
-                        <div className='text-[16px] font-bold'>{type}</div>
+                        <div className='text-[28px] font-bold'>{type}</div>
                     </button>
                 ))}
             </div>

@@ -1,155 +1,135 @@
-import { message, Form, Input, Select, DatePicker, Button } from 'antd'
-import React from 'react'
+import { Form, Input, Select, DatePicker, Button } from 'antd';
+import React from 'react';
 
+const BASE_URL = 'https://693e793f12c964ee6b6d7672.mockapi.io';
 
 function FormRegister() {
-    
-  return (
-    <div className='bg-amber-50 w-full m-auto my-10 rounded-2xl '>
-       <h1 className='text-[45px] text-center pt-10 text-amber-600'>Tạo Tài Khoản Mới</h1>
-       <div className='flex justify-center gap-20'>
-            <div className='w-1/3 py-10'>
-                <h1 className='text-[24px]'>Thông tin cá nhân</h1>
-                
-                <Form.Item 
-                    layout='vertical'
-                    name="ten"
-                    label="Tên"
-                    rules={[
-                        {
-                            required: true, message:'Đây là trường bắt buộc', whitespace: true
-                        }
-                    ]}
-                    style={{marginTop:'40px'}}
-                >
-                    <Input style={{height:'40px'}} />
+    const onRegister = async values => {
+        if (values.password !== values.confirmPassword) {
+            alert('Mật khẩu xác nhận không khớp');
+            return;
+        }
+        try {
+            const response = await fetch(`${BASE_URL}/dataUsers`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: values.username,
+                    email: values.email,
+                    phone: values.phone,
+                    password: values.password,
+                    dateOfBirth: values.dateOfBirth.format('DD-MM-YYYY'),
+                    gender: values.gender
+                })
+            });
 
-                </Form.Item>
-                <Form.Item 
-                    layout='vertical'
-                    name="ho"
-                    label="Họ"
+            const newUser = await response.json();
+            alert('Đăng ký thành công!');
+            console.log('User registered:', newUser);
+
+            window.location.href = '/login';
+        } catch (error) {
+            alert('Đăng ký thất bại!');
+            console.error(error);
+        }
+    };
+
+    return (
+        <div className='register-container'>
+            <h1>Đăng ký</h1>
+            <Form onFinish={onRegister}>
+                <Form.Item
+                    name='username'
                     rules={[
                         {
-                            required: true, message:'Đây là trường bắt buộc', whitespace: true
+                            required: true,
+                            message: 'Vui lòng nhập tên đăng nhập'
                         }
                     ]}
-                 >
-                    <Input style={{height:'40px'}} />
+                >
+                    <Input placeholder='Tên dăng nhập' />
                 </Form.Item>
+
                 <Form.Item
-                    layout='vertical'
-                    name="ngaySinh" 
-                    label="Ngày Sinh" 
+                    name='email'
                     rules={[
-                    {
-                        required: true,
-                        message: 'Vui lòng chọn ngày tháng năm sinh!',
-                    },
+                        {
+                            required: true,
+                            type: 'email',
+                            message: 'Vui lòng nhập email hợp lệ'
+                        }
+                    ]}
+                >
+                    <Input placeholder='Email' />
+                </Form.Item>
+
+                <Form.Item
+                    name='phone'
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Vui lòng nhập số điện thoại'
+                        }
+                    ]}
+                >
+                    <Input placeholder='Số điện thoại' />
+                </Form.Item>
+
+                <Form.Item
+                    name='dateOfBirth'
+                    rules={[
+                        { required: true, message: 'Vui lòng chọn ngày sinh' }
                     ]}
                 >
                     <DatePicker
-                    placeholder="DD/MM/YYYY"
-                    format="DD/MM/YYYY" 
-                    style={{ width: '100%',height:'40px' }}
+                        placeholder='Ngày sinh'
+                        style={{ width: '100%' }}
                     />
                 </Form.Item>
+
                 <Form.Item
-                    layout='vertical'
-                    name="gioiTinh"
-                    label="Giới tính"
-                    rules={[{ required: true, message: 'Đây là trường bắt buộc' }]}
-                >
-                    <Select
-                    placeholder="select your gender"
-                    defaultValue={''}
-                    options={[
-                        { label: 'Nam', value: 'male' },
-                        { label: 'Nữ', value: 'female' },
-                        { label: 'Khác', value: 'other' },
+                    name='gender'
+                    rules={[
+                        { required: true, message: 'Vui lòng chọn giới tính' }
                     ]}
-                    style={{height:'40px'}}
-                    />
+                >
+                    <Select placeholder='Giới tính'>
+                        <Select.Option value='male'>Nam</Select.Option>
+                        <Select.Option value='female'>Nữ</Select.Option>
+                        <Select.Option value='other'>Khác</Select.Option>
+                    </Select>
                 </Form.Item>
-                   
-            </div>
-            <div className='w-1/3 py-10'>
-                <h1 className='text-[24px]'>Thông tin đăng nhập</h1>
-                <Form.Item 
-                    layout='vertical'
-                    name="phone"
-                    label="Số điện thoại"
+
+                <Form.Item
+                    name='password'
+                    rules={[
+                        { required: true, message: 'Vui lòng nhập mật khẩu' }
+                    ]}
+                >
+                    <Input.Password placeholder='Mật Khẩu' />
+                </Form.Item>
+
+                <Form.Item
+                    name='confirmPassword'
                     rules={[
                         {
-                            required: true, message:'Đây là trường bắt buộc', whitespace: true
+                            required: true,
+                            message: 'Vui lòng nhập lại mật khẩu'
                         }
                     ]}
-                    style={{marginTop:'40px'}}
                 >
-                    <Input style={{height:'40px'}} />
-
+                    <Input.Password placeholder='Xác nhận mật khẩu' />
                 </Form.Item>
-                 <Form.Item
-                    layout='vertical'
-                    name="email"
-                    label="E-mail"
-                    rules={[
-                    {
-                        type: 'email',
-                        message: 'The input is not valid E-mail!',
-                    },
-                    {
-                        required: true,
-                        message: 'Please input your E-mail!',
-                    },
-                    ]}
-                >
-                    <Input style={{height:'40px'}} />
+                <Form.Item>
+                    <Button type='primary' htmlType='submit'>
+                        Đăng ký
+                    </Button>
                 </Form.Item>
-                <Form.Item
-                    layout='vertical'
-                    name="password"
-                    label="Password"
-                    rules={[
-                    {
-                        required: true,
-                        message: 'Please input your password!',
-                    },
-                    ]}
-                    hasFeedback
-                >
-                    <Input.Password style={{height:'40px'}} />
-                </Form.Item>
-
-                <Form.Item
-                    layout='vertical'
-                    name="confirm"
-                    label="Confirm Password"
-                    dependencies={['password']}
-                    hasFeedback
-                    rules={[
-                    {
-                        required: true,
-                        message: 'Please confirm your password!',
-                    },
-                    ({ getFieldValue }) => ({
-                        validator(_, value) {
-                        if (!value || getFieldValue('password') === value) {
-                            return Promise.resolve();
-                        }
-                        return Promise.reject(new Error('The new password that you entered do not match!'));
-                        },
-                    }),
-                    ]}
-                >
-                    <Input.Password style={{height:'40px'}}/>
-                </Form.Item>
-
-                <Button style={{height:'40px',width:'full',marginTop:'20px'}}>TẠO TÀI KHOẢN</Button>
-            </div>
-       </div>
-    </div>
-  )
+            </Form>
+        </div>
+    );
 }
 
 export default FormRegister;
