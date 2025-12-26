@@ -7,7 +7,7 @@ import SectionHomeInformation from '@components/SectionHomeInformation/SectionHo
 
 function HomePage() {
     return (
-        <div>
+        <div className='home-container flex flex-col h-full'>
             <Banner />
             <SectionHomeAboutUs />
             <SectionHomeCollection />
