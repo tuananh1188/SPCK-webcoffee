@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import iconArrow from '@assets/icons/arrow-right-icon.svg'
+import iconArrow from '@assets/icons/arrow-right-icon.svg';
 
 function SlideItemAbout({ data }) {
     return (

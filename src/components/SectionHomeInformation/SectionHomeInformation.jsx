@@ -54,7 +54,11 @@ function SectionHomeInformation() {
                         <Link to='' className='text-[16px] underline'>
                             XEM THÊM
                         </Link>
-                        <img src={iconArrowBlack} alt='icon arrow' className='w-6.5' />
+                        <img
+                            src={iconArrowBlack}
+                            alt='icon arrow'
+                            className='w-6.5'
+                        />
                     </div>
                 </div>
                 <div className='mt-10 overflow-hidden'>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
     FacebookOutlined,
     YoutubeOutlined,
@@ -8,8 +8,8 @@ import imgSQR from '@assets/images/6b68dfb838acb5f2ecbd.jpg';
 import imgLogo from '@assets/images/footer-logo.png';
 
 function MyFooter() {
-  return (
-    <div className='bg-black'>
+    return (
+        <div className='bg-black'>
             <div className='text-white pb-5 w-2/3 m-auto'>
                 <div className='flex justify-center py-10 text-[12px] font-semibol '>
                     <div className='w-1/6'>
@@ -74,13 +74,13 @@ function MyFooter() {
                         </p>
                     </div>
                     <div className='w-2/6 text-[16px] ml-10 text-[#EE7442] font-bold'>
-                        <img src={imgLogo} className='w-[260px]' alt='' />
+                        <img src={imgLogo} className='w-65' alt='' />
                         <h1 className='mt-5'>
                             DOWNLOAD APP
                             <br />
                             THE COFFEE HOUSE APP
                         </h1>
-                        <img src={imgSQR} className='w-[77px] mt-5' alt='' />
+                        <img src={imgSQR} className='w-19.25 mt-5' alt='' />
                         <h1 className='mt-5'>FOLLOW US</h1>
                         <div className='mt-5 flex gap-2'>
                             <div>
@@ -120,7 +120,7 @@ function MyFooter() {
                 </div>
             </div>
         </div>
-  )
+    );
 }
 
-export default MyFooter
+export default MyFooter;

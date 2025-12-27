@@ -1,13 +1,11 @@
-import { Link } from "react-router"
+import { Link } from 'react-router';
 
-function Menu({content,href}) {
-  return (
-    <div>
-      <Link to={href}>{content}</Link>
-    </div>
-    
-    
-  )
+function Menu({ content, href }) {
+    return (
+        <div>
+            <Link to={href}>{content}</Link>
+        </div>
+    );
 }
 
-export default Menu
+export default Menu;

@@ -8,7 +8,6 @@ function ProductGrid({ type, category }) {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
 
-
     const fetchData = async () => {
         try {
             setLoading(true);
@@ -17,11 +16,14 @@ function ProductGrid({ type, category }) {
 
             if (Array.isArray(data)) {
                 const filtered = data.filter(p => {
-                    if(category) {
-                        return p.type.toLowerCase() === type.toLowerCase() && p.category.toLowerCase() === category.toLowerCase();
-                    } 
+                    if (category) {
+                        return (
+                            p.type.toLowerCase() === type.toLowerCase() &&
+                            p.category.toLowerCase() === category.toLowerCase()
+                        );
+                    }
                     return p.type.toLowerCase() === type.toLowerCase();
-                }) ;
+                });
                 setProducts(filtered);
                 setLoading(false);
             } else {
@@ -40,7 +42,7 @@ function ProductGrid({ type, category }) {
 
     return (
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center'>
-            {products.map((p,index) => (
+            {products.map((p, index) => (
                 <ProductItem
                     key={index}
                     image={p.image}

@@ -61,7 +61,7 @@ const handleChange = value => {
 };
 function ShopPage() {
     return (
-        <div className='text-center bg-amber-50 py-10'>
+        <div className='text-center bg-amber-50 py-10 '>
             <h1 className='text-[28px] font-bold'>
                 Khám phá 24 cửa hàng của chúng tôi ở Hà Nội
             </h1>
