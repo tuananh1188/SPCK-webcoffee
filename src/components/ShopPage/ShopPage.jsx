@@ -1,65 +1,36 @@
-import React from 'react';
-import { Select, Space } from 'antd';
-import CardAddressShop from '@components/CardAddressShop/CardAddressShop';
-import imgAS1 from '@assets/images/ha-dong.jpg';
-import imgAS2 from '@assets/images/private-investments-reach-new-peak.jpg';
-import imgAS3 from '@assets/images/wfWBRGDb.jpg';
-import imgAS4 from '@assets/images/tch-bui_thi_xuan_222d5d8f0d6e470f8429dabb244f494f_1024x1024.jpg';
-import imgAS5 from '@assets/images/ha-dong.jpg';
-import imgAS6 from '@assets/images/tch-bui_thi_xuan_222d5d8f0d6e470f8429dabb244f494f_1024x1024.jpg';
-
-const dataCardAddressShop = [
-    {
-        id: 1,
-        img: imgAS1,
-        name: 'The Coffee House Go Thăng Long',
-        address:
-            'GO! Thăng Long, 222 Đ. Trần Duy Hưng, Trung Hoà, Cầu Giấy, Hà Nội',
-        open: '08:00-22:00'
-    },
-    {
-        id: 2,
-        img: imgAS2,
-        name: 'HN Lê Thanh Nghị',
-        address: '92 Lê Thanh Nghị, Hai Bà Trưng, Hà Nội',
-        open: '07:30-21:00'
-    },
-    {
-        id: 3,
-        img: imgAS3,
-        name: 'HN Vincom Mega Mall Smart City',
-        address:
-            'L1-16A - Tầng L1 TTTM Vincom Mega Mall Smart City- Đường Đại Lộ Thăng Long, Phường Tây Mỗ, Quận Nam Từ Liêm',
-        open: '07:30 - 22:30'
-    },
-    {
-        id: 4,
-        img: imgAS4,
-        name: 'HN Vũ Phạm Hàm ',
-        address: '60 Vũ Phạm Hàm, Yên Hoà, Cầu Giấy, Hà Nội',
-        open: '07:30 - 22:30'
-    },
-    {
-        id: 5,
-        img: imgAS5,
-        name: 'HN The Park Home  ',
-        address: 'Lô D12 KĐT, Thành Thái, Dịch Vọng, Cầu Giấy, Hà Nội',
-        open: '07:30 - 22:30'
-    },
-    {
-        id: 6,
-        img: imgAS6,
-        name: 'HN Trần Kim Xuyến  ',
-        address:
-            'Ô số 01A1, Tầng 1, Chung cư E2-Chelsea Residences Trần Kim Xuyến, Khu ĐTM Yên Hòa, Cầu Giấy, Hà Nội, Việt Nam',
-        open: '07:30 - 22:30'
-    }
-];
+import React, { useEffect, useState } from 'react';
+import { message, Select, Space, Spin } from 'antd';
+import ShopItem from '@components/ShopItem/ShopItem';
+import { BASE_URL } from '@components/SectionHomeCollection/SectionHomeCollection';
 
 const handleChange = value => {
     console.log(`selected ${value}`);
 };
 function ShopPage() {
+    const [shop, setShop] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    const fetchData = async () => {
+        try {
+            setLoading(true);
+            const res = await fetch(`${BASE_URL}/dataAddressShop`);
+            const data = await res.json();
+
+            if (Array.isArray(data)) {
+                setShop(data);
+            } else {
+                message.error('có lỗi xảy ra');
+            }
+        } catch (error) {
+            message.error('có lỗi xảy ra');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
     return (
         <div className='text-center bg-amber-50 py-10 '>
             <h1 className='text-[28px] font-bold'>
@@ -94,7 +65,23 @@ function ShopPage() {
                     />
                 </Space>
             </div>
-            <CardAddressShop data={dataCardAddressShop} />
+            <div className=' flex flex-wrap justify-around items-center gap-5 mt-10'>
+                {shop.map((item, index) => (
+                    <ShopItem
+                        key={index}
+                        image={item.image}
+                        name={item.name}
+                        address={item.address}
+                        open={item.open}
+                    />
+                ))}
+                {shop.length === 0 && (
+                    <p className='text-gray-400'>
+                        Chưa có cửa hàng ở khu vực này
+                    </p>
+                )}
+                {loading && <Spin size='large' percent='auto' fullscreen />}
+            </div>
         </div>
     );
 }

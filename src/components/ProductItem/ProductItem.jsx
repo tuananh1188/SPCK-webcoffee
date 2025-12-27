@@ -3,7 +3,7 @@ import React from 'react';
 function ProductItem({ image, type, category, name, price, showCategory }) {
     return (
         <>
-            <div className='flex flex-col justify-between gap-5 mt-20'>
+            <div className='flex flex-col justify-between items-center gap-5 mt-20'>
                 <div>
                     <img
                         src={image}

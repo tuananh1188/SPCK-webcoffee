@@ -1,8 +1,7 @@
 import ProductItem from '@components/ProductItem/ProductItem';
 import React, { useEffect, useState } from 'react';
-import { Spin } from 'antd';
-
-const BASE_URL = 'https://693e793f12c964ee6b6d7672.mockapi.io';
+import { message, Spin } from 'antd';
+import { BASE_URL } from '@components/SectionHomeCollection/SectionHomeCollection';
 
 function ProductGrid({ type, category }) {
     const [products, setProducts] = useState([]);
@@ -27,10 +26,10 @@ function ProductGrid({ type, category }) {
                 setProducts(filtered);
                 setLoading(false);
             } else {
-                alert(data);
+                message.error('có lỗi xảy ra')
             }
         } catch {
-            // Noi xu ly loi
+            message.error('có lỗi xảy ra')
         } finally {
             setLoading(false);
         }

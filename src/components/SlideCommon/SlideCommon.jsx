@@ -31,10 +31,10 @@ function SlideCommon({ data, isProductItem = false, numberShow }) {
                             />
                         ) : (
                             <img
-                                image={item}
+                                src={item.image}
                                 key={index}
                                 alt='image'
-                                className='h-383 w-full'
+                                className='h-full w-full object-cover'
                             />
                         )}
                     </>

@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { Modal, Form, Input, Button, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '@components/ProductGrid/ProductGrid';
 
-const BASE_URL = 'https://693e793f12c964ee6b6d7672.mockapi.io';
 
 function LoginModal({ open, onClose, onLoginSuccess, onOpenRegister }) {
     const [loading, setLoading] = useState(false);

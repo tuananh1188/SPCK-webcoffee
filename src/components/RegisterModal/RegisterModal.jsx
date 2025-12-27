@@ -1,8 +1,8 @@
 // src/components/RegisterModal/RegisterModal.jsx
 import React, { useState } from 'react';
 import { Modal, Form, Input, Button, DatePicker, Select, message } from 'antd';
+import { BASE_URL } from '@components/SectionHomeCollection/SectionHomeCollection';
 
-const BASE_URL = 'https://693e793f12c964ee6b6d7672.mockapi.io';
 
 function RegisterModal({ open, onClose, onRegisterSuccess }) {
     const [loading, setLoading] = useState(false);

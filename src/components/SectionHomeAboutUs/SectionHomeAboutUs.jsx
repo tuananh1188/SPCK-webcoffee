@@ -8,6 +8,7 @@ import imgQuote1 from '@assets/images/sticker-aboutus-quote-1.png';
 import imgQuote2 from '@assets/images/sticker-aboutus-quote-2.png';
 import imgQuote3 from '@assets/images/sticker-aboutus-quote.png';
 import TextCurved from '@components/TextCurved/TextCurved';
+import { Link } from 'react-router';
 
 function SectionHomeAboutUs() {
     return (
@@ -30,9 +31,11 @@ function SectionHomeAboutUs() {
                     </p>
                 </div>
                 <div>
-                    <button className='btn px-5 py-2 bg-[#000000] rounded-4xl text-[#FFFFFF] text-[24px] font-bold '>
-                        TÌM HIỂU
-                    </button>
+                    <Link to='/about'>
+                        <button className='btn px-5 py-2 bg-[#000000] rounded-4xl text-[#FFFFFF] text-[24px] font-bold cursor-pointer '>
+                            TÌM HIỂU
+                        </button>
+                    </Link>
                 </div>
                 <div className='relative py-20 '>
                     <img src={imgMain} alt='image main' className='w-125' />
