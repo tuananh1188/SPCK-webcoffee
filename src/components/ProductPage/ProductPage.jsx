@@ -41,7 +41,7 @@ function ProductPage() {
                             COLLECTION
                         </h3>
                     </div>
-                    <nav className='flex flex-wrap justify-center gap-4 md:gap-6'>
+                    <nav className='flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-15'>
                         {nav_items.map((item, index) => (
                             <button
                                 key={index}

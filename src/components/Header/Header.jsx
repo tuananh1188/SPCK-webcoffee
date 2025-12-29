@@ -28,8 +28,8 @@ function MyHeader() {
     };
 
     return (
-        <div className='bg-white w-full sticky top-0 z-20 shadow-md'>
-            <div className='flex justify-between items-center h-16 px-4 md:px-10'>
+        <div className='bg-white w-full sticky py-2 top-0 z-20 shadow-md'>
+            <div className='flex justify-around items-center h-16 px-4 md:px-10'>
                 {/* Logo */}
                 <div>
                     <img src={Logo} alt='Logo' className='w-24 md:w-40' />

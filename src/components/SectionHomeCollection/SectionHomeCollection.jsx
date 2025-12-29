@@ -82,7 +82,7 @@ function SectionHomeCollection() {
             <div className='w-3/5'>
                 <SlideCommon data={products} isProductItem numberShow={4} />
             </div>
-            <div className='flex justify-center items-center gap-1  '>
+            <div className='flex justify-center items-center gap-1 mt-10  '>
                 <Link
                     to='/products'
                     className='text-[16px] font-bold underline  '

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { message } from 'antd';
 
-function Profile() {
+function MyProfile() {
     const [user, setUser] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({
@@ -179,4 +179,4 @@ function Profile() {
     );
 }
 
-export default Profile;
+export default MyProfile;

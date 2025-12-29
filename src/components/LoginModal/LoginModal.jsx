@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Modal, Form, Input, Button, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { BASE_URL } from '@components/ProductGrid/ProductGrid';
+import {BASE_URL} from '@components/SectionHomeCollection/SectionHomeCollection'
 
 
 function LoginModal({ open, onClose, onLoginSuccess, onOpenRegister }) {
@@ -24,7 +24,7 @@ function LoginModal({ open, onClose, onLoginSuccess, onOpenRegister }) {
                 message.success('Đăng nhập thành công!');
                 onLoginSuccess(foundUser);
                 onClose();
-                navigate('/home'); // ✅ chuyển hướng sang Home
+                navigate('/home'); 
             } else {
                 message.error('Sai tên đăng nhập hoặc mật khẩu');
             }
