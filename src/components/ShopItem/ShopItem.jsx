@@ -2,7 +2,7 @@ import React from 'react';
 
 function ShopItem({ image, name, address, open }) {
     return (
-        <div className='max-w-80 h-130 px-5 py-10 bg-amber-100 flex flex-col items-center rounded-2xl cursor-pointer'>
+        <div className='max-w-80 h-130 px-5 py-10 flex flex-col rounded-2xl cursor-pointer'>
             <div>
                 <img src={image} className='w-65 h-50 rounded-2xl ' />
             </div>
