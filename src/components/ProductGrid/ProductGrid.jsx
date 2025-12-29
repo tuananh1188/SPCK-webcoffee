@@ -90,7 +90,7 @@ function ProductGrid({ type, category }) {
                         </p>
                         <Button
                             type='primary'
-                            className='!bg-[#ED7542] !border-none !text-white hover:!bg-[#d95f2f] !py-5 !px-10'
+                            className='bg-[#ED7542]! border-none! text-white! hover:bg-[#d95f2f]! py-5! px-10!'
                         >
                             Thêm vào giỏ hàng
                         </Button>
