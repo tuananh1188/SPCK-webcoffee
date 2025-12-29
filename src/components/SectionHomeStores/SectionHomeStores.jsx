@@ -57,7 +57,7 @@ function SectionHomeStores() {
                         />
                     </div>
                     <div className='mt-5 text-left p-2 flex justify-start items-center gap-1'>
-                        <Link to='/shops'>XEM DANH SÁCH CỬA HÀNG</Link>
+                        <Link to='/shops' className='underline'>XEM DANH SÁCH CỬA HÀNG</Link>
                         <img
                             src={iconArrowBlack}
                             alt='icon arrow'
